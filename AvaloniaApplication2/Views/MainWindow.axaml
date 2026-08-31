@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="using:FluentAvalonia.UI.Controls"
+        xmlns:local="using:AvaloniaApplication2.Views"
+        x:Class="AvaloniaApplication2.Views.MainWindow"
+        TransparencyLevelHint="Mica,AcrylicBlur,None"
+        Background="Transparent"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaApplication2">
+    <ui:FANavigationView Name="NavView"
+                         IsBackButtonVisible="True"
+                         IsBackEnabled="{Binding #FrameView.CanGoBack}"
+                         BackRequested="NavView_OnBackRequested"
+                         SelectionChanged="NavView_OnSelectionChanged"
+                         IsSettingsVisible="False">
+        <ui:FANavigationView.MenuItems>
+            <ui:FANavigationViewItem Content="Home"
+                                     IconSource="Home"
+                                     Tag="{x:Type local:HomePage}" />
+        </ui:FANavigationView.MenuItems>
+
+        <ui:FANavigationView.FooterMenuItems>
+            <ui:FANavigationViewItem Content="Settings"
+                                     IconSource="Settings"
+                                     Tag="{x:Type local:SettingsPage}" />
+        </ui:FANavigationView.FooterMenuItems>
+
+        <ScrollViewer>
+            <ui:FAFrame Name="FrameView"
+                        CacheSize="0"
+                        Navigated="FrameView_OnNavigated" />
+        </ScrollViewer>
+    </ui:FANavigationView>
+</Window>
